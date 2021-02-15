@@ -4,21 +4,57 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    
     <!-- Font per mostrar les icones del temps -->
     <link href="styles/css/owfont-regular.min.css" rel="stylesheet" type="text/css">
     <!-- CSS Custom -->
-    <link href="styles/styles.css/"
+    <link href="styles/css/styles.css" rel="stylesheet">
     <title>Acudits</title>
 </head>
 <body>
-    <h1>Acudits</h1>
-    <!-- Mostram el temps -->
-    <span><i id="icon"></i></span><p id="temps"></p>
-    <!-- Botó per generar un nou acudit -->
-    <button id="button">SEGUENT ACUDIT</button>
-    <!-- Mostram l'acudit -->
-    <p id="joke"></p> 
+    <div class="container">
+        <!-- Mostram el temps -->
+        <header>
+            <p id="temps"></p>
+            <i id="icon"></i>
+        </header>
+        
+        
+        
+        <article>
+            <div class="row">
+                <div class="card col-8 text-center">
+                    <div class="card-body">
+                        <h1 class="card-title display-4">Preparat per riure?</h1>
+                        <!-- Mostram l'acudit -->
+                        <p class="card-text" id="joke"></p>
+                        <!-- Botó per generar un nou acudit -->
+                       <a class="btn btn-primary btn-lg" href="#" role="button" id="button">Seguent acudit</a>
+                    </div>
+                </div>
+            </div>
+        </article>
+        
+        <!-- <article> -->
+            <!-- <div class="bg-light p-5 rounded-lg m-3 text-center"> -->
+                <!-- <h1 class="display-4">Preparat per riure?</h1> -->
+                <!-- <p id="joke"></p> -->
+                <!-- <a class="btn btn-primary btn-lg" href="#" role="button" id="button">Seguent acudit</a> -->
+            <!-- </div> -->
+        <!-- </article> -->
 
+    </div>
+    <div class="bg"></div>
+    
+    
+
+    <!-- Boostrap 5 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <!-- Custom Script -->
     <script src="./scripts/scripts.js"></script>
 </body>
 </html>

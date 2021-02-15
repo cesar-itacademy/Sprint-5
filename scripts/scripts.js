@@ -22,7 +22,7 @@ const button = document.getElementById("button");
        const iconClass = "owf-"+dataWeather.weather[0].id;
        // Mostram el temps que fa a la ciutat de Barcelona 
        wIcon.classList.add("owf",iconClass,"owf-3x");
-       weatherParagraph.textContent = `${(dataWeather.name).toUpperCase()}`;
+       weatherParagraph.textContent = `Avui: ${(dataWeather.weather[0].description)}   `;
      })
      // Alerta que indica que la resposta del servidor API no ha estat satisfactoria
      //.catch(response => alert(`API Key no inclosa per securetat`))
