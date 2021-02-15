@@ -1,48 +1,64 @@
 // WEB ACUDITS
-// Nivell 2
+// Nivell 3
 
-/* Exercici 3
-Ben fet! Ja tens una web d'acudits operativa. Ja que està web està pensada per a mostrar acudits als usuaris a primera hora del matí perquè comencin bé el dia, afegirem informació meteorològica ja que els pot ser d'utilitat. 
-
-Consumir una API d'informació meteorològica i mostrar-ho en la web. Aquesta API ha de dir-se en l'obertura, no mitjançant un botó.
-
-Nota: Encara no és necessari maquetar la web, amb mostrar una paraula que indiqui el temps és suficient. */
+/* Exercici 4
+Maquetar la web d'acudits i temps meteorològic conforme a la següent pantalla:
+Exercici 5
+Atès que els nostres usuaris s'han avorrit de veure sempre els mateixos acudits, buscar una altra API (o APIs) d'acudits i utilitzar-la per a alternar acudits de diferents fonts (bé alternant un de cada o de manera aleatòria).
+*/
 
 const button = document.getElementById("button");
 
 // Funció que mostra el temps carrega desde l'inici 
  window.onload = function temps() {
    // API KEY no inclosa per no publicarla al Github
-   const url = "https://api.openweathermap.org/data/2.5/weather?lang=ca&id=3128760&appid={API}";
+   const url = "https://api.openweathermap.org/data/2.5/weather?lang=ca&id=3128760&appid=e03c75f9e8a87c5a3c6cef444dc5d0e8";
    fetch(url)
      .then((response) => response.ok ? Promise.resolve(response) : Promise.reject(response)) // Comprovam si la resposta ha estat OK
      .then((response) => response.json()) // Treiem les dades del promise com JSON
      .then((dataWeather) => {
        const weatherParagraph = document.getElementById("temps");
+       const wIcon = document.getElementById("icon");
+       const iconClass = "owf-"+dataWeather.weather[0].id;
        // Mostram el temps que fa a la ciutat de Barcelona 
-       weatherParagraph.textContent = `${(dataWeather.weather[0].description).toUpperCase()} A ${(dataWeather.name).toUpperCase()}`;
+       wIcon.classList.add("owf",iconClass,"owf-3x");
+       weatherParagraph.textContent = `${(dataWeather.name).toUpperCase()}`;
      })
      // Alerta que indica que la resposta del servidor API no ha estat satisfactoria
-     .catch(response => alert(`API Key no inclosa per securetat`))
-     // .catch(response => alert(response)) 
+     //.catch(response => alert(`API Key no inclosa per securetat`))
+     //.catch(response => alert(response)) 
  };
 
 
 // Funció que carrega un nou acudit al fer click al botó
  button.addEventListener("click", () => {
-   const url = "https://icanhazdadjoke.co";
-    fetch(url, {
+   let randomJoke;
+   let url;
+  // Generam un nombre aleaotori per seleccionar API
+  if (Math.random() > 0.5) {
+    randomJoke = 1;
+    url = "https://icanhazdadjoke.com";
+  }else {
+    randomJoke = 0;
+    url = "https://official-joke-api.appspot.com/random_joke";
+  };
+    fetch(url, { // Sol.licitud d'API
        method: "GET",
        headers: {
          Accept: "application/json"
        }
      })
-      .then((response) => response.ok ? Promise.resolve(response) : Promise.reject(response))// Comprovam si la resposta ha estat OK
+     // Comprovam si la resposta ha estat OK
+      .then((response) => response.ok ? Promise.resolve(response) : Promise.reject(response))
       .then((response) => response.json())// Treiem les dades del promise com JSON
       .then((dataJoke) => {
         // Mostram un nou acudit 
         const paragraph = document.getElementById("joke");
-        paragraph.textContent = dataJoke.joke;
+        // Selecció del paràmetre de sortida segons API
+        paragraph.textContent = `${randomJoke ? dataJoke.joke : dataJoke.setup + dataJoke.punchline}`;
+        //  randomJoke ? paragraph.textContent = 
+        //  dataJoke.joke : paragraph.textContent = 
+        // `${dataJoke.setup} : ${dataJoke.punchline} `;
       })
       // Alerta que indica que la resposta del servidor API no ha estat satisfactoria
       .catch(response => alert(response)) 
