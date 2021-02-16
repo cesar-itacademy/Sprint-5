@@ -27,9 +27,6 @@ window.onload = function temps() {
       wIcon.classList.add("owf", iconClass, "owf-3x");
       weatherParagraph.textContent = `Avui: ${dataWeather.weather[0].description}   `;
     });
-  // Alerta que indica que la resposta del servidor API no ha estat satisfactoria
-  .catch(response => alert(`API Key Metereologia no inclosa per securetat`))
-  //.catch(response => alert(response))
 };
 
 // Funció que carrega un nou acudit al fer click al botó
