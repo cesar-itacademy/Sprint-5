@@ -13,7 +13,7 @@ const button = document.getElementById("button");
 window.onload = function temps() {
   // API KEY no inclosa per no publicarla al Github
   const url =
-    "https://api.openweathermap.org/data/2.5/weather?lang=ca&id=3128760&appid={API QUITADA POR SEGURIDAD}";
+    "https://api.openweathermap.org/data/2.5/weather?lang=ca&id=3128760&appid={NO API KEY}";
   fetch(url)
     .then((response) =>
       response.ok ? Promise.resolve(response) : Promise.reject(response)
@@ -28,7 +28,7 @@ window.onload = function temps() {
       weatherParagraph.textContent = `Avui: ${dataWeather.weather[0].description}   `;
     });
   // Alerta que indica que la resposta del servidor API no ha estat satisfactoria
-  //.catch(response => alert(`API Key no inclosa per securetat`))
+  .catch(response => alert(`API Key Metereologia no inclosa per securetat`))
   //.catch(response => alert(response))
 };
 
